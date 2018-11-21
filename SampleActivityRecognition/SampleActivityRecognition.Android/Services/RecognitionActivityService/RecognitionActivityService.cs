@@ -169,6 +169,7 @@ namespace SampleActivityRecognition.Droid.Services.RecognitionActivityService
                 default:
                     break;
             }
+            Console.WriteLine($"Activity Detected: {LastActivity.ActivityType.ToString()}.");
         }
 
         private async Task RequestActivityUpdateAsync()
