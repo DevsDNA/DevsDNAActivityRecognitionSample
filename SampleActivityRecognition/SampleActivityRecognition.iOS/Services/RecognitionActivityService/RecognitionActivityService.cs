@@ -1,11 +1,10 @@
 ﻿[assembly: Xamarin.Forms.Dependency(typeof(SampleActivityRecognition.iOS.Services.RecognitionActivityService.RecognitionActivityService))]
 namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
 {
-    using System;
-    using System.Threading.Tasks;
     using CoreMotion;
     using Foundation;
     using SampleActivityRecognition.Services.RecognitionActivityService;
+    using System;
 
     /// <summary>
     /// Recognition activity service.
@@ -22,7 +21,7 @@ namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
         /// </summary>
         public RecognitionActivityService()
         {
-            motionActivityManager = new CMMotionActivityManager();
+            this.motionActivityManager = new CMMotionActivityManager();
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
             try
             {
                 if (CMMotionActivityManager.IsActivityAvailable)
-                    motionActivityManager.StartActivityUpdates(NSOperationQueue.CurrentQueue, CMMotionActivity_Update);
+                    this.motionActivityManager.StartActivityUpdates(NSOperationQueue.CurrentQueue, CMMotionActivity_Update);
                 else
                     Console.WriteLine("This device not supports motion activity recognition.");
             }
@@ -60,7 +59,7 @@ namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
         {
             try
             {
-                motionActivityManager?.StopActivityUpdates();
+                this.motionActivityManager?.StopActivityUpdates();
             }
             catch (Exception ex)
             {
@@ -91,7 +90,7 @@ namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
                 LastActivity = new ActivityRecognized() { ActivityType = ActivityTypes.Stopped, Confidence = 25 + (int)activity.Confidence * 25 };
 
             }
-            
+
             ActivityChanged?.Invoke(this, new ActivityChangedEventArgs(LastActivity));
         }
     }

@@ -1,9 +1,9 @@
 ﻿namespace SampleActivityRecognition.Views
 {
-    using System;
-    using System.ComponentModel;
     using SampleActivityRecognition.Services.RecognitionActivityService;
     using SampleActivityRecognition.ViewModels;
+    using System;
+    using System.ComponentModel;
     using Xamarin.Forms;
 
 
@@ -32,20 +32,20 @@
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ViewModel.PropertyChanged+= ViewModel_PropertyChanged;
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             ViewModel.OnAppearing();
         }
-        
+
         /// <summary>
         /// Ons the disappearing.
         /// </summary>
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            ViewModel.PropertyChanged-= ViewModel_PropertyChanged;
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
             ViewModel.OnDisappearing();
         }
-        
+
 
         private void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -64,31 +64,31 @@
 
         private void ExecuteAnimation(bool makeButtonBigger)
         {
-            if (makeButtonBigger && !isAnimationRealized)
+            if (makeButtonBigger && !this.isAnimationRealized)
             {
-                Button1.IsVisible = false;
-                Button2.IsVisible = false;
-                Button3.IsVisible = false;
-                Button4.IsVisible = false;
+                this.Button1.IsVisible = false;
+                this.Button2.IsVisible = false;
+                this.Button3.IsVisible = false;
+                this.Button4.IsVisible = false;
 
-                Animation animationHeight = new Animation(x => { this.StartButton.HeightRequest = x; this.StopButton.HeightRequest = x; }, this.Button1.Height, this.Height / 2);
-                Animation animationWidth = new Animation(x => { this.StartButton.WidthRequest = x; this.StopButton.WidthRequest = x; }, this.Button1.Height, this.Width / 2);
+                Animation animationHeight = new Animation(x => { this.StartButton.HeightRequest = x; this.StopButton.HeightRequest = x; }, this.Button1.Height, Height / 2);
+                Animation animationWidth = new Animation(x => { this.StartButton.WidthRequest = x; this.StopButton.WidthRequest = x; }, this.Button1.Height, Width / 2);
                 animationWidth.Commit(this, nameof(animationWidth));
                 animationHeight.Commit(this, nameof(animationHeight));
-                isAnimationRealized = true;
+                this.isAnimationRealized = true;
             }
-            else if (!makeButtonBigger && isAnimationRealized)
+            else if (!makeButtonBigger && this.isAnimationRealized)
             {
-                Button1.IsVisible = true;
-                Button2.IsVisible = true;
-                Button3.IsVisible = true;
-                Button4.IsVisible = true;
+                this.Button1.IsVisible = true;
+                this.Button2.IsVisible = true;
+                this.Button3.IsVisible = true;
+                this.Button4.IsVisible = true;
 
-                Animation animationHeight = new Animation(x => { this.StartButton.HeightRequest = x; this.StopButton.HeightRequest = x; }, this.Height / 2, this.Button1.Height);
-                Animation animationWidth = new Animation(x => { this.StartButton.WidthRequest = x; this.StopButton.WidthRequest = x; }, this.Width / 2, this.Button1.Height);
+                Animation animationHeight = new Animation(x => { this.StartButton.HeightRequest = x; this.StopButton.HeightRequest = x; }, Height / 2, this.Button1.Height);
+                Animation animationWidth = new Animation(x => { this.StartButton.WidthRequest = x; this.StopButton.WidthRequest = x; }, Width / 2, this.Button1.Height);
                 animationWidth.Commit(this, nameof(animationWidth));
                 animationHeight.Commit(this, nameof(animationHeight));
-                isAnimationRealized = false;
+                this.isAnimationRealized = false;
             }
         }
 
