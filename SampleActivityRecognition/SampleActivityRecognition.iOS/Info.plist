@@ -14,6 +14,18 @@
 	<true/>
 	<key>MinimumOSVersion</key>
 	<string>8.2</string>
+  <key>NSLocationUsageDescription</key>
+  <string>This app needs to send your current location for continuos tracking purpose</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>This app needs to send your current location for continuos tracking purpose</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>This app needs to send your current location for continuos tracking purpose</string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string>This app needs to send your current location for continuos tracking purpose</string>
+  <key>NSMotionUsageDescription</key>
+  <string>This app needs access to motion activity for continuos tracking purpose</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>This app needs access to calendar.</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>

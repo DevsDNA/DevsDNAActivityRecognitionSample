@@ -88,7 +88,6 @@ namespace SampleActivityRecognition.iOS.Services.RecognitionActivityService
             else if (activity.Stationary)
             {
                 LastActivity = new ActivityRecognized() { ActivityType = ActivityTypes.Stopped, Confidence = 25 + (int)activity.Confidence * 25 };
-
             }
 
             ActivityChanged?.Invoke(this, new ActivityChangedEventArgs(LastActivity));
